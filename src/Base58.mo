@@ -67,6 +67,7 @@ module {
 
   public type Base58Error = {
     #illegalBase58String;
+	#emptyString;
 	#anotherError;
   };
 
@@ -90,6 +91,9 @@ module {
 
   public func Decode(input : Text) :  Result.Result<Nat, Base58Error> {
 	let mysize = input.size();
+	if (mysize == 0) {
+		return #err(#emptyString);
+	};
     var aux = 0: Nat;
     var count = 0: Nat;
 	

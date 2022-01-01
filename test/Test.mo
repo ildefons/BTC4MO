@@ -29,6 +29,10 @@ actor Test {
     let aux2n = 123456789 : Nat;
     assert(aux2 == #ok(123456789));
 
+    let aux0 = Base58.Decode("");
+    Debug.print("Decode :" # debug_show(aux0, 0)); //emptyString 
+    assert(aux0 == #err(#emptyString));
+
     let aux3 = Base58.Decode("abcdefg");
     Debug.print("Decode abcdefg" # debug_show(aux3, 2)); //1278986212167
     assert(aux3 == #ok(1278986212167));
